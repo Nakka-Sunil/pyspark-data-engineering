@@ -50,3 +50,5 @@ This repository covers (and will expand to include):
 
 ## Repository Structure (will evolve)
 
+🚧 **Work in Progress**
+This repository is actively updated as I continue learning PySpark and data engineering concepts.
