@@ -106,3 +106,81 @@ JOIN SANDBOX.PLAYGROUND.ORDERS O ON C.C_CUSTKEY = O.O_CUSTKEY
 
 SELECT C_NAME, O_ORDERKEY, O_ORDERDATE FROM LATEST_ORD 
 WHERE RN = 1;
+
+
+---Procedures 
+CREATE OR REPLACE PROCEDURE check_customer_balance(p_balance FLOAT)
+RETURNS STRING
+LANGUAGE SQL
+AS
+$$
+DECLARE
+    result STRING;
+BEGIN
+    IF (p_balance >= 100000) THEN
+        result := 'Gold Customer';
+    ELSEIF (p_balance >= 50000) THEN
+        result := 'Silver Customer';
+    ELSE
+        result := 'Bronze Customer';
+    END IF;
+
+    RETURN result;
+END;
+$$;
+
+call check_customer_balance(10000);
+
+CREATE OR REPLACE PROCEDURE count_orders()
+RETURNS STRING
+LANGUAGE SQL 
+AS
+$$
+DECLARE 
+    v_count number;
+    result STRING;
+    
+BEGIN
+    SELECT COUNT(DISTINCT O_ORDERKEY) INTO :v_count FROM SANDBOX.PLAYGROUND.ORDERS;
+
+    IF (v_count > 10000) THEN 
+        result := 'Higher order volume: ' || v_count;
+    ELSE 
+        result := 'Lower Order Volume: ' || v_count;
+    END IF;
+    
+    RETURN result; 
+
+END;
+
+$$;
+
+call count_orders();
+
+CREATE OR REPLACE PROCEDURE order_summery(start_date DATE, end_date DATE)
+RETURNS STRING
+LANGUAGE SQL 
+AS
+
+$$
+DECLARE 
+    v_orders NUMBER;
+    v_result STRING;
+
+BEGIN 
+    SELECT COUNT(DISTINCT O_ORDERKEY) INTO :v_orders FROM SANDBOX.PLAYGROUND.ORDERS
+    WHERE O_ORDERDATE BETWEEN :start_date AND :end_date;
+
+    IF (v_orders >= 50000) THEN 
+        v_result := 'Busy Period -- Total orders: ' || v_orders;
+
+    ELSE 
+        v_result := 'Normal Period -- Total Orders: '|| v_orders;
+    END IF;
+
+    RETURN v_result;
+
+ END;
+$$;
+
+call order_summery(CAST('1996-01-02'AS DATE) , CAST('1996-02-09'AS DATE));
