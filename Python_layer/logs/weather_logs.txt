@@ -1,0 +1,2 @@
+2026-05-10 23:25:30.826 | INFO     | __main__:fetch_weather_data:27 - API call started!!!
+2026-05-10 23:25:31.801 | INFO     | __main__:save_to_csv:57 - File saved successfully!

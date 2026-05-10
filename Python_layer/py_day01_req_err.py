@@ -1,8 +1,27 @@
 import requests 
 from loguru import logger
 import csv
+import json
+import os
+from datetime import datetime
 
-url = f'https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&hourly=temperature_2m'
+
+date = datetime.now().strftime('%Y-%m-%d')
+
+with open('Python_layer\config.json','r') as file:
+    config = json.load(file)
+    # print(config)
+
+log_dir = os.path.join('Python_layer', config['log_folder'])
+os.makedirs(log_dir, exist_ok=True)
+full_log_path = os.path.join(log_dir, 'weather_logs.txt')
+logger.remove()
+logger.add(full_log_path, rotation="10 MB")
+
+long = config['longitude']
+lat = config['latitude']
+
+url = f'https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={long}&hourly=temperature_2m'
 
 def fetch_weather_data():
     try:
@@ -20,18 +39,26 @@ def fetch_weather_data():
     return data
     
 def transform_weather_data(data):
-    dataset = [data['longitude'], data['latitude'], data['generationtime_ms'], data['generationtime_ms'], data['elevation'], data['hourly']['time'], data['hourly']['temperature_2m']]
+    dataset = []
+    time = data['hourly']['time']
+    temps = data['hourly']['temperature_2m']
+    for time, temp in zip(time,temps):
+        dataset.append([time,temp])
     return dataset
 
-def save_to_csv(data):
-    with open('Python_layer\weather_banglore.csv', 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(['longitude', 'latitude','generationtime_ms','elevation','time','temperature_2m'])
-        writer.writerow(data)
-        logger.info('file updated successfully!!!')
+def save_to_csv(data, date):
+    output_dir = os.path.join('Python_layer', config['output_folder'])
+    os.makedirs(output_dir, exist_ok=True)
+    full_output_path = os.path.join(output_dir, f'output_{date}.csv')
 
+    with open(full_output_path, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['time', 'temperature_2m'])
+        writer.writerows(data)
+    logger.info('File saved successfully!')
+            
 if __name__ == '__main__':
     fetching_data = fetch_weather_data()
     if fetching_data:
         transform_data = transform_weather_data(fetching_data)
-        save_to_csv(transform_data)
+        save_to_csv(transform_data, date)
