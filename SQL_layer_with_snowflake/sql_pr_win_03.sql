@@ -1,0 +1,46 @@
+--Q1: Cumulative revenue by customer
+SELECT
+    CUSTOMER_ID,
+    ORDER_ID,
+    ORDER_DATE,
+    TOTAL_AMOUNT,
+
+    SUM(TOTAL_AMOUNT) OVER(
+        PARTITION BY CUSTOMER_ID
+        ORDER BY ORDER_DATE
+    ) AS CUMULATIVE_REVENUE
+
+FROM SANDBOX.PLAYGROUND_02.ORDERS
+ORDER BY CUSTOMER_ID, ORDER_DATE;
+
+--Q2: Users with consecutive order dates
+WITH cte AS (
+    SELECT
+        C.CUSTOMER_ID,
+        C.NAME,
+        O.ORDER_DATE,
+        LAG(O.ORDER_DATE) OVER(
+            PARTITION BY C.CUSTOMER_ID
+            ORDER BY O.ORDER_DATE
+        ) AS PREV_ORDER_DATE
+    FROM SANDBOX.PLAYGROUND_02.CUSTOMERS C
+    JOIN SANDBOX.PLAYGROUND_02.ORDERS O
+        ON C.CUSTOMER_ID = O.CUSTOMER_ID
+)
+
+SELECT *
+FROM cte
+WHERE DATEDIFF(day, PREV_ORDER_DATE, ORDER_DATE) = 1;
+ 
+    INSERT INTO orders VALUES
+(1031, 1, '2024-03-11', 3200.00, 'delivered'),
+(1032, 1, '2024-03-12', 1800.00, 'delivered'),
+
+(1033, 2, '2024-03-23', 2500.00, 'delivered'),
+(1034, 2, '2024-03-24', 4100.00, 'delivered'),
+
+(1035, 3, '2024-04-05', 1200.00, 'delivered'),
+(1036, 3, '2024-04-06', 2200.00, 'delivered'),
+
+(1037, 5, '2024-04-30', 900.00, 'delivered'),
+(1038, 5, '2024-05-01', 1500.00, 'delivered');
