@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pandas Cheatsheet</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161e;
+    --surface2: #1a1e2a;
+    --border: #252a38;
+    --accent: #00e5c0;
+    --accent2: #7b6cff;
+    --accent3: #ff6b6b;
+    --accent4: #ffd166;
+    --accent5: #06d6a0;
+    --text: #e8ecf4;
+    --muted: #6b7280;
+    --code-bg: #0a0c10;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+
+  /* ── HEADER ── */
+  .header { text-align: center; margin-bottom: 3rem; position: relative; }
+  .header::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 700px; height: 220px;
+    background: radial-gradient(ellipse, rgba(0,229,192,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header h1 {
+    font-size: clamp(2.5rem,6vw,4rem); font-weight: 800; letter-spacing: -2px;
+    background: linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,var(--accent3) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 0.4rem;
+  }
+  .header p { color: var(--muted); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; }
+
+  /* ── PHASE TAGS ── */
+  .phase-tag {
+    display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem; font-weight: 700; padding: 0.18rem 0.55rem;
+    border-radius: 3px; letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 1.4rem; max-width: 1440px; margin: 0 auto;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    transition: transform 0.18s, border-color 0.18s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: rgba(0,229,192,0.22); }
+  .card.wide  { grid-column: 1 / -1; }
+  .card-header {
+    padding: 1rem 1.4rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 0.7rem; flex-wrap: wrap;
+  }
+  .card-header-inner { flex: 1; }
+  .card-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .card-header h2 { font-size: 0.93rem; font-weight: 700; letter-spacing: 0.3px; margin-bottom: 0.25rem; }
+  /* definition line under heading */
+  .def {
+    font-size: 0.78rem; color: #9ca3b0; font-family: 'Syne', sans-serif;
+    font-weight: 400; line-height: 1.45;
+  }
+  .card-body { padding: 1.1rem 1.4rem; }
+
+  /* ── CODE ── */
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.9rem 1.1rem; overflow-x: auto;
+    margin: 0.5rem 0;
+  }
+  code { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.75; }
+  .kw  { color: #c792ea; }
+  .fn  { color: #82aaff; }
+  .str { color: #c3e88d; }
+  .num { color: #f78c6c; }
+  .cm  { color: #546e7a; }
+  .op  { color: var(--accent); }
+
+  /* ── TABLES ── */
+  .mini-table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; margin: 0.5rem 0; }
+  .mini-table th { background: var(--surface2); color: var(--accent); padding: 0.38rem 0.65rem; text-align: left; font-weight: 600; border: 1px solid var(--border); }
+  .mini-table td { padding: 0.38rem 0.65rem; border: 1px solid var(--border); color: var(--text); vertical-align: top; }
+  .mini-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 0.67rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted); margin: 0.9rem 0 0.35rem;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* ── NOTE ── */
+  .note {
+    font-size: 0.74rem; color: var(--muted); margin-top: 0.45rem;
+    padding-left: 0.55rem; border-left: 2px solid var(--border); line-height: 1.5;
+  }
+
+  /* ── INLINE CODE ── */
+  .ic {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+    background: var(--code-bg); border: 1px solid var(--border);
+    border-radius: 3px; padding: 0.08rem 0.32rem; color: var(--accent);
+  }
+
+  /* ── VS GRID ── */
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.65rem; margin-top: 0.5rem; }
+  .vs-item { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem; }
+  .vs-item h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); margin-bottom: 0.25rem; font-weight: 700; }
+  .vs-item .vs-def { font-size: 0.74rem; color: #9ca3b0; margin-bottom: 0.45rem; line-height: 1.4; }
+
+  /* ── WINDOW FUNCTION SHOWCASE ── */
+  .wf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-top: 0.5rem; }
+  .wf-item { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; }
+  .wf-item h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.15rem; display: flex; align-items: center; gap: 0.4rem; }
+  .wf-item .wf-def { font-size: 0.72rem; color: #9ca3b0; margin-bottom: 0.45rem; line-height: 1.4; }
+  .wf-badge {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700;
+    padding: 0.1rem 0.4rem; border-radius: 3px; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .sql-eq { background: rgba(123,108,255,0.18); color: var(--accent2); }
+  .usecase { background: rgba(0,229,192,0.12); color: var(--accent); }
+
+  /* ── RANK METHODS TABLE ── */
+  .rank-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.5rem; margin: 0.5rem 0; }
+  .rank-cell { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.55rem 0.65rem; text-align: center; }
+  .rank-cell .rm { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent4); font-weight: 700; margin-bottom: 0.2rem; }
+  .rank-cell .rd { font-size: 0.68rem; color: var(--muted); line-height: 1.35; }
+
+  /* ── SECTION HEADER ── */
+  .section-header { max-width: 1440px; margin: 2.5rem auto 1rem; display: flex; align-items: center; gap: 1rem; }
+  .section-header h2 { font-size: 0.72rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* phase colours */
+  .p1 { background: rgba(0,229,192,0.14);   color: var(--accent); }
+  .p2 { background: rgba(123,108,255,0.14); color: var(--accent2); }
+  .p3 { background: rgba(255,107,107,0.14); color: var(--accent3); }
+  .p4 { background: rgba(255,209,102,0.14); color: var(--accent4); }
+  .p5 { background: rgba(6,214,160,0.14);   color: var(--accent5); }
+  .p6 { background: rgba(0,229,192,0.11);   color: #67e8f9; }
+  .p7 { background: rgba(139,92,246,0.14);  color: #a78bfa; }
+  .p8 { background: rgba(249,115,22,0.14);  color: #fb923c; }
+  .p9 { background: rgba(236,72,153,0.14);  color: #f472b6; }
+  .pA { background: rgba(234,179,8,0.14);   color: #facc15; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Pandas Cheatsheet</h1>
+  <p>Phases 1–16 · Definitions · Syntax · Examples · Window Functions Deep-Dive</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1 — FOUNDATIONS
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Foundations</h2></div>
+<div class="grid">
+
+  <!-- Creating DataFrames -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🏗️</span>
+      <div class="card-header-inner">
+        <h2>Creating DataFrames <span class="phase-tag p1">Phase 1</span></h2>
+        <div class="def">A <strong>DataFrame</strong> is a 2-dimensional labelled table — like a spreadsheet or SQL table — with rows and named columns. It is the core data structure in Pandas.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="section-label">From a dictionary (most common)</div>
+      <pre><code><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+df = pd.<span class="fn">DataFrame</span>({
+    <span class="str">'name'</span>:   [<span class="str">'Alice'</span>, <span class="str">'Bob'</span>, <span class="str">'Carol'</span>],
+    <span class="str">'dept'</span>:   [<span class="str">'IT'</span>,    <span class="str">'HR'</span>,   <span class="str">'IT'</span>  ],
+    <span class="str">'salary'</span>: [<span class="num">90000</span>,  <span class="num">75000</span>,  <span class="num">85000</span> ]
+})</code></pre>
+      <div class="section-label">From files</div>
+      <pre><code>df = pd.<span class="fn">read_csv</span>(<span class="str">'data.csv'</span>)
+df = pd.<span class="fn">read_parquet</span>(<span class="str">'data.parquet'</span>)   <span class="cm"># preferred in DE</span>
+df = pd.<span class="fn">read_json</span>(<span class="str">'data.json'</span>)</code></pre>
+    </div>
+  </div>
+
+  <!-- Selecting & Indexing -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🎯</span>
+      <div class="card-header-inner">
+        <h2>Selecting &amp; Indexing <span class="phase-tag p1">Phase 1</span></h2>
+        <div class="def"><strong>.loc[]</strong> selects by <em>label</em> (column name, index label). <strong>.iloc[]</strong> selects by <em>integer position</em> (0-based). Use <span class="ic">df['col']</span> for a single column Series, <span class="ic">df[['a','b']]</span> for multiple columns as a DataFrame.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="mini-table">
+        <tr><th>Method</th><th>Based on</th><th>Example</th></tr>
+        <tr><td><span class="ic">.loc[row, col]</span></td><td>label</td><td><span class="ic">df.loc[0, 'name']</span></td></tr>
+        <tr><td><span class="ic">.iloc[r, c]</span></td><td>position</td><td><span class="ic">df.iloc[0, 1]</span></td></tr>
+        <tr><td><span class="ic">df['col']</span></td><td>—</td><td>returns a Series</td></tr>
+        <tr><td><span class="ic">df[['a','b']]</span></td><td>—</td><td>returns a DataFrame</td></tr>
+      </table>
+      <pre><code><span class="cm"># rows 0-2, two columns</span>
+df.<span class="op">loc</span>[<span class="num">0</span>:<span class="num">2</span>, [<span class="str">'name'</span>, <span class="str">'salary'</span>]]
+
+<span class="cm"># first 3 rows, first 2 columns (by position)</span>
+df.<span class="op">iloc</span>[:<span class="num">3</span>, :<span class="num">2</span>]</code></pre>
+    </div>
+  </div>
+
+  <!-- Filtering & Sorting -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🔍</span>
+      <div class="card-header-inner">
+        <h2>Filtering &amp; Sorting <span class="phase-tag p1">Phase 1</span></h2>
+        <div class="def"><strong>Boolean filtering</strong> passes a True/False mask over rows. Combine conditions with <span class="ic">&amp;</span> (AND), <span class="ic">|</span> (OR), <span class="ic">~</span> (NOT) — always wrap each condition in parentheses.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># single condition</span>
+df[df[<span class="str">'salary'</span>] > <span class="num">80000</span>]
+
+<span class="cm"># AND — both must be true</span>
+df[(df[<span class="str">'dept'</span>] == <span class="str">'IT'</span>) &amp; (df[<span class="str">'salary'</span>] > <span class="num">85000</span>)]
+
+<span class="cm"># OR — either is true</span>
+df[(df[<span class="str">'dept'</span>] == <span class="str">'IT'</span>) | (df[<span class="str">'dept'</span>] == <span class="str">'Finance'</span>)]
+
+<span class="cm"># isin() — match against a list</span>
+df[df[<span class="str">'dept'</span>].<span class="op">isin</span>([<span class="str">'IT'</span>, <span class="str">'Finance'</span>])]
+
+<span class="cm"># sort descending</span>
+df.<span class="fn">sort_values</span>([<span class="str">'dept'</span>, <span class="str">'salary'</span>], ascending=[<span class="kw">True</span>, <span class="kw">False</span>])</code></pre>
+    </div>
+  </div>
+
+  <!-- Rename / Drop -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">✂️</span>
+      <div class="card-header-inner">
+        <h2>Rename &amp; Drop <span class="phase-tag p1">Phase 1</span></h2>
+        <div class="def"><strong>rename()</strong> changes column/index names without altering data. <strong>drop()</strong> removes rows or columns. <span class="ic">inplace=True</span> modifies the df directly instead of returning a copy.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># rename one or more columns</span>
+df.<span class="fn">rename</span>(columns={<span class="str">'salary'</span>: <span class="str">'emp_salary'</span>}, inplace=<span class="kw">True</span>)
+
+<span class="cm"># drop columns</span>
+df.<span class="fn">drop</span>(columns=[<span class="str">'bonus'</span>, <span class="str">'_tmp'</span>], inplace=<span class="kw">True</span>)
+
+<span class="cm"># drop specific rows by index label</span>
+df.<span class="fn">drop</span>(index=[<span class="num">0</span>, <span class="num">3</span>], inplace=<span class="kw">True</span>)
+
+<span class="cm"># always reset index after dropping rows</span>
+df.<span class="fn">reset_index</span>(drop=<span class="kw">True</span>, inplace=<span class="kw">True</span>)</code></pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2 — CLEANING
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Cleaning &amp; Preparation</h2></div>
+<div class="grid">
+
+  <!-- Null Handling -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🧹</span>
+      <div class="card-header-inner">
+        <h2>Null Handling <span class="phase-tag p2">Phase 2</span></h2>
+        <div class="def"><strong>NaN</strong> (Not a Number) is Pandas' placeholder for missing data. <strong>isnull()</strong> detects them, <strong>dropna()</strong> removes rows with them, <strong>fillna()</strong> replaces them with a value or strategy like mean/forward-fill.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># how many nulls per column?</span>
+df.<span class="fn">isnull</span>().<span class="fn">sum</span>()
+
+<span class="cm"># drop rows if ANY column is null</span>
+df.<span class="fn">dropna</span>()
+
+<span class="cm"># drop only when a specific column is null</span>
+df.<span class="fn">dropna</span>(subset=[<span class="str">'salary'</span>])
+
+<span class="cm"># fill with column mean (numeric)</span>
+df[<span class="str">'salary'</span>] = df[<span class="str">'salary'</span>].<span class="fn">fillna</span>(df[<span class="str">'salary'</span>].<span class="fn">mean</span>())
+
+<span class="cm"># fill with static value</span>
+df[<span class="str">'dept'</span>] = df[<span class="str">'dept'</span>].<span class="fn">fillna</span>(<span class="str">'Unknown'</span>)
+
+<span class="cm"># forward-fill: copy previous row's value</span>
+df[<span class="str">'sales'</span>] = df[<span class="str">'sales'</span>].<span class="fn">ffill</span>()
+
+<span class="cm"># backward-fill: copy next row's value</span>
+df[<span class="str">'sales'</span>] = df[<span class="str">'sales'</span>].<span class="fn">bfill</span>()</code></pre>
+    </div>
+  </div>
+
+  <!-- Types & Duplicates -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🔧</span>
+      <div class="card-header-inner">
+        <h2>Types, Duplicates &amp; Replace <span class="phase-tag p2">Phase 2</span></h2>
+        <div class="def"><strong>astype()</strong> casts a column to a new dtype — important for memory and correctness. <strong>drop_duplicates()</strong> keeps only the first occurrence of repeated rows. <strong>replace()</strong> swaps specific values.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># cast column types</span>
+df[<span class="str">'salary'</span>] = df[<span class="str">'salary'</span>].<span class="fn">astype</span>(<span class="str">'float64'</span>)
+df[<span class="str">'id'</span>]     = df[<span class="str">'id'</span>].<span class="fn">astype</span>(<span class="str">'int32'</span>)     <span class="cm"># halves memory</span>
+
+<span class="cm"># count and remove duplicates</span>
+df.<span class="fn">duplicated</span>().<span class="fn">sum</span>()
+df.<span class="fn">drop_duplicates</span>()
+df.<span class="fn">drop_duplicates</span>(subset=[<span class="str">'email'</span>])         <span class="cm"># unique per email</span>
+
+<span class="cm"># replace values (like a lookup swap)</span>
+df[<span class="str">'dept'</span>] = df[<span class="str">'dept'</span>].<span class="fn">replace</span>({
+    <span class="str">'IT'</span>: <span class="str">'Technology'</span>, <span class="str">'HR'</span>: <span class="str">'People'</span>
+})</code></pre>
+    </div>
+  </div>
+
+  <!-- String ops -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">📝</span>
+      <div class="card-header-inner">
+        <h2>String Operations <span class="phase-tag p2">Phase 2</span></h2>
+        <div class="def">The <strong>.str accessor</strong> lets you apply string methods to an entire column at once — vectorised, no loops needed. Works on columns with <span class="ic">object</span> or <span class="ic">string</span> dtype.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code>df[<span class="str">'name'</span>].<span class="op">str</span>.<span class="fn">lower</span>()                <span class="cm"># 'Alice' → 'alice'</span>
+df[<span class="str">'name'</span>].<span class="op">str</span>.<span class="fn">upper</span>()                <span class="cm"># 'alice' → 'ALICE'</span>
+df[<span class="str">'name'</span>].<span class="op">str</span>.<span class="fn">strip</span>()                <span class="cm"># remove leading/trailing spaces</span>
+df[<span class="str">'email'</span>].<span class="op">str</span>.<span class="fn">contains</span>(<span class="str">'@gmail'</span>)   <span class="cm"># True/False mask</span>
+df[<span class="str">'dept'</span>].<span class="op">str</span>.<span class="fn">replace</span>(<span class="str">'IT'</span>, <span class="str">'Tech'</span>)  <span class="cm"># find & replace</span>
+df[<span class="str">'full_name'</span>].<span class="op">str</span>.<span class="fn">split</span>(<span class="str">' '</span>, expand=<span class="kw">True</span>) <span class="cm"># split to cols</span>
+df[<span class="str">'code'</span>].<span class="op">str</span>.<span class="fn">startswith</span>(<span class="str">'EMP'</span>)     <span class="cm"># True/False</span>
+df[<span class="str">'desc'</span>].<span class="op">str</span>.<span class="fn">len</span>()                  <span class="cm"># character count</span>
+df[<span class="str">'name'</span>].<span class="op">str</span>.<span class="fn">extract</span>(<span class="str">r'(\d+)'</span>)     <span class="cm"># regex capture</span></code></pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3 — AGGREGATIONS
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Aggregations &amp; Analysis</h2></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">📊</span>
+      <div class="card-header-inner">
+        <h2>groupby + agg <span class="phase-tag p3">Phase 3</span></h2>
+        <div class="def"><strong>groupby()</strong> splits the DataFrame into groups based on a column's values — like SQL <span class="ic">GROUP BY</span>. <strong>agg()</strong> then applies one or more aggregation functions (sum, mean, count, max…) to each group.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># single aggregation</span>
+df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'salary'</span>].<span class="fn">mean</span>()
+
+<span class="cm"># multiple metrics in one call (named aggregation)</span>
+df.<span class="fn">groupby</span>(<span class="str">'dept'</span>).<span class="fn">agg</span>(
+    avg_sal   = (<span class="str">'salary'</span>, <span class="str">'mean'</span>),
+    max_sal   = (<span class="str">'salary'</span>, <span class="str">'max'</span>),
+    headcount = (<span class="str">'name'</span>,   <span class="str">'count'</span>),
+    total_sal = (<span class="str">'salary'</span>, <span class="str">'sum'</span>)
+)
+
+<span class="cm"># frequency count of a column</span>
+df[<span class="str">'dept'</span>].<span class="fn">value_counts</span>(normalize=<span class="kw">True</span>)  <span class="cm"># as %</span></code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">⚡</span>
+      <div class="card-header-inner">
+        <h2>transform — group metric on each row <span class="phase-tag p3">Phase 3</span></h2>
+        <div class="def"><strong>transform()</strong> computes a group-level statistic but returns a Series the same length as the original DataFrame — so you can add the group result as a new column without losing any rows. Unlike <span class="ic">agg()</span> which collapses rows.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># add department average back to every row</span>
+df[<span class="str">'dept_avg'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'salary'</span>]
+      .<span class="fn">transform</span>(<span class="str">'mean'</span>)
+)
+
+<span class="cm"># now flag above-average employees</span>
+df[<span class="str">'above_avg'</span>] = df[<span class="str">'salary'</span>] > df[<span class="str">'dept_avg'</span>]
+
+<span class="cm"># % of dept total  (transform + divide)</span>
+df[<span class="str">'pct_of_dept'</span>] = (
+    df[<span class="str">'salary'</span>] / df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'salary'</span>].<span class="fn">transform</span>(<span class="str">'sum'</span>)
+)</code></pre>
+      <p class="note">Used heavily in PySpark, dbt, analytics engineering, and ML feature engineering.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 4 — JOINS
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Joins &amp; Merges</h2></div>
+<div class="grid">
+
+  <div class="card wide">
+    <div class="card-header">
+      <span class="card-icon">🔗</span>
+      <div class="card-header-inner">
+        <h2>merge / concat / join <span class="phase-tag p4">Phase 4</span></h2>
+        <div class="def"><strong>merge()</strong> combines two DataFrames on a key column — directly equivalent to SQL JOINs. <strong>concat()</strong> stacks DataFrames vertically (rows) or horizontally (columns). <strong>join()</strong> is a shortcut for merging on the index.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="mini-table" style="margin-bottom:0.8rem">
+        <tr><th>how=</th><th>Keeps</th><th>SQL equivalent</th></tr>
+        <tr><td><span class="ic">inner</span></td><td>Only rows that match in <strong>both</strong> tables</td><td>INNER JOIN</td></tr>
+        <tr><td><span class="ic">left</span></td><td>All left rows + matching right (NaN if no match)</td><td>LEFT JOIN</td></tr>
+        <tr><td><span class="ic">right</span></td><td>All right rows + matching left (NaN if no match)</td><td>RIGHT JOIN</td></tr>
+        <tr><td><span class="ic">outer</span></td><td>All rows from both, NaN where no match</td><td>FULL OUTER JOIN</td></tr>
+      </table>
+      <pre><code><span class="cm"># basic merge on one key</span>
+pd.<span class="fn">merge</span>(orders, customers, on=<span class="str">'customer_id'</span>, how=<span class="str">'left'</span>)
+
+<span class="cm"># composite key (multiple columns)</span>
+pd.<span class="fn">merge</span>(df1, df2, on=[<span class="str">'dept'</span>, <span class="str">'year'</span>], how=<span class="str">'inner'</span>)
+
+<span class="cm"># different column names in each table</span>
+pd.<span class="fn">merge</span>(df1, df2, left_on=<span class="str">'id'</span>, right_on=<span class="str">'emp_id'</span>, how=<span class="str">'inner'</span>)
+
+<span class="cm"># stack rows (UNION ALL equivalent)</span>
+pd.<span class="fn">concat</span>([jan_df, feb_df, mar_df], ignore_index=<span class="kw">True</span>)
+
+<span class="cm"># stack columns side-by-side</span>
+pd.<span class="fn">concat</span>([df_features, df_labels], axis=<span class="num">1</span>)</code></pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 5 — map / apply / transform
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Functions &amp; Transformations</h2></div>
+<div class="grid">
+
+  <div class="card wide">
+    <div class="card-header">
+      <span class="card-icon">🛠️</span>
+      <div class="card-header-inner">
+        <h2>map vs apply vs transform <span class="phase-tag p5">Phase 5</span></h2>
+        <div class="def">Three ways to apply custom logic — they differ in <em>what</em> they operate on and <em>what shape</em> they return. Choosing the right one matters for readability, performance, and correctness.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="vs-grid">
+        <div class="vs-item">
+          <h4>map()</h4>
+          <div class="vs-def">Element-wise on a <strong>single Series</strong>. Best for dictionary lookups or simple 1-to-1 replacements. Fastest of the three for this use case.</div>
+          <pre><code><span class="cm"># dict lookup</span>
+df[<span class="str">'dept'</span>].<span class="fn">map</span>({
+  <span class="str">'IT'</span>: <span class="str">'Technology'</span>,
+  <span class="str">'HR'</span>: <span class="str">'People'</span>
+})
+
+<span class="cm"># lambda</span>
+df[<span class="str">'salary'</span>].<span class="fn">map</span>(
+  <span class="kw">lambda</span> x: x / <span class="num">1000</span>
+)</code></pre>
+        </div>
+        <div class="vs-item">
+          <h4>apply()</h4>
+          <div class="vs-def">Custom function on a <strong>Series or full DataFrame rows/cols</strong>. Most flexible but slowest. Use when vectorised alternatives don't exist.</div>
+          <pre><code><span class="cm"># on a column</span>
+df[<span class="str">'salary'</span>].<span class="fn">apply</span>(
+  <span class="kw">lambda</span> x: x * <span class="num">1.1</span>
+)
+
+<span class="cm"># across rows (axis=1)</span>
+df.<span class="fn">apply</span>(
+  <span class="kw">lambda</span> r: r[<span class="str">'a'</span>] + r[<span class="str">'b'</span>],
+  axis=<span class="num">1</span>
+)</code></pre>
+        </div>
+        <div class="vs-item">
+          <h4>transform()</h4>
+          <div class="vs-def">After <strong>groupby</strong> — returns same shape as original. Adds a group-level metric back to every individual row without collapsing the DataFrame.</div>
+          <pre><code><span class="cm"># dept mean on every row</span>
+df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)
+  [<span class="str">'salary'</span>]
+  .<span class="fn">transform</span>(<span class="str">'mean'</span>)
+
+<span class="cm"># group rank
+</span>df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)
+  [<span class="str">'salary'</span>]
+  .<span class="fn">transform</span>(<span class="str">'rank'</span>)</code></pre>
+        </div>
+      </div>
+      <p class="note" style="margin-top:0.8rem">⚡ Always prefer vectorised operations (<span class="ic">df['salary'] * 1.1</span>) over <span class="ic">apply(lambda…)</span> — 10–100× faster. Use <span class="ic">np.where()</span> for conditionals instead of row-wise apply.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 6 — RESHAPING
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Reshaping</h2></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🔄</span>
+      <div class="card-header-inner">
+        <h2>pivot_table <span class="phase-tag p6">Phase 6</span></h2>
+        <div class="def"><strong>pivot_table()</strong> reshapes data so that unique values of one column become <em>column headers</em> — turning a long table into a summary matrix. Think of it as <span class="ic">GROUP BY</span> + <span class="ic">CASE WHEN</span> in SQL.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># dept × year salary matrix</span>
+df.<span class="fn">pivot_table</span>(
+    values     = <span class="str">'salary'</span>,
+    index      = <span class="str">'dept'</span>,    <span class="cm"># rows</span>
+    columns    = <span class="str">'year'</span>,    <span class="cm"># new columns</span>
+    aggfunc    = <span class="str">'mean'</span>,
+    fill_value = <span class="num">0</span>
+)
+<span class="cm"># result: rows=dept, cols=each year, values=avg salary</span></code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">↔️</span>
+      <div class="card-header-inner">
+        <h2>melt — wide → long <span class="phase-tag p6">Phase 6</span></h2>
+        <div class="def"><strong>melt()</strong> is the inverse of pivot — it takes multiple value columns and collapses them into two columns: a <em>variable</em> column (the old header) and a <em>value</em> column. Converts "wide" format to "long" (normalised) format.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># BEFORE: Q1  Q2  Q3  Q4 are separate columns
+# AFTER:  quarter | sales  (two columns, more rows)</span>
+
+df.<span class="fn">melt</span>(
+    id_vars    = [<span class="str">'name'</span>, <span class="str">'dept'</span>],
+    value_vars = [<span class="str">'Q1'</span>, <span class="str">'Q2'</span>, <span class="str">'Q3'</span>, <span class="str">'Q4'</span>],
+    var_name   = <span class="str">'quarter'</span>,
+    value_name = <span class="str">'sales'</span>
+)</code></pre>
+      <p class="note">Essential for ML preprocessing, normalised analytics tables, and visualisation libraries.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 7 — CHAINING + MULTI-INDEX
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Method Chaining &amp; Multi-Index</h2></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">⛓️</span>
+      <div class="card-header-inner">
+        <h2>Method Chaining <span class="phase-tag p7">Phase 7</span></h2>
+        <div class="def">Instead of re-assigning <span class="ic">df</span> after every step, <strong>chain</strong> method calls together in one expression. Each method returns a DataFrame, so the next method operates on it immediately. Produces readable, pipeline-style code.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="section-label">❌ Repetitive re-assignment</div>
+      <pre><code>df = df.<span class="fn">dropna</span>()
+df = df.<span class="fn">sort_values</span>(<span class="str">'salary'</span>)
+df = df.<span class="fn">rename</span>(columns={<span class="str">'salary'</span>:<span class="str">'emp_salary'</span>})
+df = df[df[<span class="str">'emp_salary'</span>] > <span class="num">80000</span>]</code></pre>
+      <div class="section-label">✅ Clean method chain</div>
+      <pre><code>result = (
+    df
+    .<span class="fn">dropna</span>()
+    .<span class="fn">sort_values</span>(<span class="str">'salary'</span>)
+    .<span class="fn">rename</span>(columns={<span class="str">'salary'</span>: <span class="str">'emp_salary'</span>})
+    .<span class="fn">query</span>(<span class="str">'emp_salary > 80000'</span>)
+    .<span class="fn">assign</span>(bonus=<span class="kw">lambda</span> x: x[<span class="str">'emp_salary'</span>] * <span class="num">0.1</span>)
+    .<span class="fn">reset_index</span>(drop=<span class="kw">True</span>)
+)</code></pre>
+      <p class="note">Mirrors dbt model logic, Spark transformations, and Polars expressions.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🗂️</span>
+      <div class="card-header-inner">
+        <h2>Multi-Index / Hierarchical <span class="phase-tag p8">Phase 8</span></h2>
+        <div class="def">When you <strong>groupby two or more columns</strong>, the result has a multi-level index (dept + city, for example). You can either <span class="ic">reset_index()</span> to flatten it, or keep it and access levels with <span class="ic">unstack()</span>.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># group by two dimensions — multi-index result</span>
+result = (
+    df.<span class="fn">groupby</span>([<span class="str">'dept'</span>, <span class="str">'city'</span>])[<span class="str">'salary'</span>]
+      .<span class="fn">mean</span>()
+      .<span class="fn">reset_index</span>()
+      .<span class="fn">rename</span>(columns={<span class="str">'salary'</span>: <span class="str">'avg_salary'</span>})
+)
+
+<span class="cm"># keep multi-index and access a level</span>
+grp = df.<span class="fn">groupby</span>([<span class="str">'dept'</span>,<span class="str">'city'</span>])[<span class="str">'salary'</span>].<span class="fn">mean</span>()
+grp.<span class="op">loc</span>[(<span class="str">'IT'</span>, <span class="str">'NYC'</span>)]
+
+<span class="cm"># pivot inner index into columns</span>
+grp.<span class="fn">unstack</span>()   <span class="cm"># city becomes column headers</span></code></pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 8 — WINDOW FUNCTIONS (deep dive)
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Window Functions — Deep Dive</h2></div>
+<div class="grid">
+
+  <!-- What is a window function -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="card-icon">🪟</span>
+      <div class="card-header-inner">
+        <h2>What is a Window Function? <span class="phase-tag p9">Phase 9</span></h2>
+        <div class="def">A <strong>window function</strong> computes a value for each row using a <em>window</em> of surrounding rows — without collapsing the DataFrame like <span class="ic">groupby().agg()</span> does. Each row keeps its original position but gains a new computed column based on its group, order, or neighbours. Directly maps to <strong>SQL window functions</strong> (<span class="ic">OVER (PARTITION BY … ORDER BY …)</span>).</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="mini-table">
+        <tr><th>Pandas function</th><th>SQL equivalent</th><th>What it does</th></tr>
+        <tr><td><span class="ic">.rank()</span></td><td>RANK() / DENSE_RANK() / ROW_NUMBER()</td><td>Assign a position number within a group</td></tr>
+        <tr><td><span class="ic">.cumsum()</span></td><td>SUM() OVER (ORDER BY …)</td><td>Running total from first row to current row</td></tr>
+        <tr><td><span class="ic">.shift(1)</span></td><td>LAG(col, 1)</td><td>Previous row's value</td></tr>
+        <tr><td><span class="ic">.shift(-1)</span></td><td>LEAD(col, 1)</td><td>Next row's value</td></tr>
+        <tr><td><span class="ic">.rolling(N)</span></td><td>AVG() OVER (ROWS BETWEEN N-1 PRECEDING…)</td><td>Fixed-size sliding window</td></tr>
+        <tr><td><span class="ic">.expanding()</span></td><td>SUM/AVG() OVER (ROWS UNBOUNDED PRECEDING)</td><td>Grows from first row to current</td></tr>
+        <tr><td><span class="ic">.cummax() / .cummin()</span></td><td>MAX() OVER (ORDER BY …)</td><td>Running maximum/minimum</td></tr>
+        <tr><td><span class="ic">.pct_change()</span></td><td>(curr - prev) / prev</td><td>Period-over-period % change</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ROW NUMBER -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🔢</span>
+      <div class="card-header-inner">
+        <h2>Row Number <span class="phase-tag p9">Phase 9</span></h2>
+        <div class="def">Assigns a unique sequential integer to each row within a partition, ordered by a column. Equivalent to SQL's <span class="ic">ROW_NUMBER() OVER (PARTITION BY dept ORDER BY salary DESC)</span>. No ties — every row gets a distinct number.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># ROW_NUMBER within each department</span>
+df[<span class="str">'row_num'</span>] = (
+    df.<span class="fn">sort_values</span>([<span class="str">'dept'</span>, <span class="str">'salary'</span>], ascending=[<span class="kw">True</span>, <span class="kw">False</span>])
+      .<span class="fn">groupby</span>(<span class="str">'dept'</span>)
+      .<span class="fn">cumcount</span>() + <span class="num">1</span>  <span class="cm"># cumcount starts at 0</span>
+)
+
+<span class="cm"># Alternative: rank with method='first' (no ties)</span>
+df[<span class="str">'row_num'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'salary'</span>]
+      .<span class="fn">rank</span>(method=<span class="str">'first'</span>, ascending=<span class="kw">False</span>)
+      .<span class="fn">astype</span>(<span class="str">'int'</span>)
+)
+
+<span class="cm"># keep only top-1 per department</span>
+top1 = df[df[<span class="str">'row_num'</span>] == <span class="num">1</span>]</code></pre>
+      <p class="note">Classic use case: deduplicate — keep the latest record per customer_id.</p>
+    </div>
+  </div>
+
+  <!-- RANK methods -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🏆</span>
+      <div class="card-header-inner">
+        <h2>rank() — 4 Methods <span class="phase-tag p9">Phase 9</span></h2>
+        <div class="def"><strong>rank()</strong> assigns a position within a group. The <span class="ic">method</span> argument controls what happens when two rows have the same value (a tie). Choosing the right method changes the output significantly.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rank-grid">
+        <div class="rank-cell"><div class="rm">average</div><div class="rd">Ties get avg of their positions. 1,2,2→1,2.5,2.5</div></div>
+        <div class="rank-cell"><div class="rm">min</div><div class="rd">Ties get lowest rank. 1,2,2→1,2,2 (SQL RANK)</div></div>
+        <div class="rank-cell"><div class="rm">dense</div><div class="rd">No gaps after ties. 1,2,2→1,2,2 then next=3</div></div>
+        <div class="rank-cell"><div class="rm">first</div><div class="rd">First occurrence wins. No ties. = ROW_NUMBER</div></div>
+      </div>
+      <pre><code><span class="cm"># dense rank within dept (most common for analytics)</span>
+df[<span class="str">'rank'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'salary'</span>]
+      .<span class="fn">rank</span>(method=<span class="str">'dense'</span>, ascending=<span class="kw">False</span>)
+)
+
+<span class="cm"># PERCENTILE rank (0.0 to 1.0)</span>
+df[<span class="str">'pct_rank'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'salary'</span>]
+      .<span class="fn">rank</span>(pct=<span class="kw">True</span>)
+)</code></pre>
+    </div>
+  </div>
+
+  <!-- LAG / LEAD -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">⏮️</span>
+      <div class="card-header-inner">
+        <h2>LAG &amp; LEAD — shift() <span class="phase-tag p9">Phase 9</span></h2>
+        <div class="def"><strong>shift(n)</strong> moves column values down by n rows (LAG) or up by n rows (LEAD). Perfect for comparing a current value against the previous/next period. NaN appears where there is no previous/next row.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># LAG — previous row's value</span>
+df[<span class="str">'prev_sales'</span>]  = df[<span class="str">'sales'</span>].<span class="fn">shift</span>(<span class="num">1</span>)
+
+<span class="cm"># LEAD — next row's value</span>
+df[<span class="str">'next_sales'</span>]  = df[<span class="str">'sales'</span>].<span class="fn">shift</span>(-<span class="num">1</span>)
+
+<span class="cm"># month-over-month change</span>
+df[<span class="str">'mom_change'</span>] = df[<span class="str">'sales'</span>] - df[<span class="str">'sales'</span>].<span class="fn">shift</span>(<span class="num">1</span>)
+
+<span class="cm"># % change from previous period</span>
+df[<span class="str">'mom_pct'</span>] = df[<span class="str">'sales'</span>].<span class="fn">pct_change</span>() * <span class="num">100</span>
+
+<span class="cm"># LAG within a group (per dept)</span>
+df[<span class="str">'prev_in_dept'</span>] = (
+    df.<span class="fn">sort_values</span>(<span class="str">'date'</span>)
+      .<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'sales'</span>]
+      .<span class="fn">shift</span>(<span class="num">1</span>)
+)</code></pre>
+    </div>
+  </div>
+
+  <!-- CUMULATIVE -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">📈</span>
+      <div class="card-header-inner">
+        <h2>Cumulative Functions <span class="phase-tag p9">Phase 9</span></h2>
+        <div class="def"><strong>Cumulative</strong> functions grow the window from the first row up to the current row. <span class="ic">cumsum()</span> is a running total. <span class="ic">cummax()</span> tracks the highest value seen so far. <span class="ic">cumprod()</span> is a running product (used in finance).</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># running total of sales</span>
+df[<span class="str">'running_total'</span>] = df[<span class="str">'sales'</span>].<span class="fn">cumsum</span>()
+
+<span class="cm"># running total per group</span>
+df[<span class="str">'dept_running_total'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'sales'</span>].<span class="fn">cumsum</span>()
+)
+
+<span class="cm"># running maximum (all-time high)</span>
+df[<span class="str">'ath_price'</span>] = df[<span class="str">'price'</span>].<span class="fn">cummax</span>()
+
+<span class="cm"># running minimum (all-time low)</span>
+df[<span class="str">'atl_price'</span>] = df[<span class="str">'price'</span>].<span class="fn">cummin</span>()
+
+<span class="cm"># cumulative % of total</span>
+df[<span class="str">'cum_pct'</span>] = (
+    df[<span class="str">'sales'</span>].<span class="fn">cumsum</span>() / df[<span class="str">'sales'</span>].<span class="fn">sum</span>() * <span class="num">100</span>
+)</code></pre>
+    </div>
+  </div>
+
+  <!-- ROLLING -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🎡</span>
+      <div class="card-header-inner">
+        <h2>Rolling Window <span class="phase-tag p9">Phase 9</span></h2>
+        <div class="def"><strong>rolling(N)</strong> applies a function over a fixed-size sliding window of N rows. The window slides one row at a time. Used for smoothing noisy data, trend detection, and anomaly detection. First N-1 rows produce NaN.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># 7-day rolling average (smoothing)</span>
+df[<span class="str">'7d_avg'</span>] = df[<span class="str">'sales'</span>].<span class="fn">rolling</span>(<span class="num">7</span>).<span class="fn">mean</span>()
+
+<span class="cm"># avoid NaN at start with min_periods</span>
+df[<span class="str">'7d_avg'</span>] = df[<span class="str">'sales'</span>].<span class="fn">rolling</span>(<span class="num">7</span>, min_periods=<span class="num">1</span>).<span class="fn">mean</span>()
+
+<span class="cm"># rolling std dev (volatility / anomaly detection)</span>
+df[<span class="str">'volatility'</span>] = df[<span class="str">'price'</span>].<span class="fn">rolling</span>(<span class="num">30</span>).<span class="fn">std</span>()
+
+<span class="cm"># rolling max (e.g. peak load in last 24h)</span>
+df[<span class="str">'peak_24h'</span>] = df[<span class="str">'load'</span>].<span class="fn">rolling</span>(<span class="num">24</span>).<span class="fn">max</span>()
+
+<span class="cm"># expanding = grow from start (no fixed size)</span>
+df[<span class="str">'cumulative_avg'</span>] = df[<span class="str">'sales'</span>].<span class="fn">expanding</span>().<span class="fn">mean</span>()</code></pre>
+    </div>
+  </div>
+
+  <!-- REAL WORLD EXAMPLES — wide card -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="card-icon">🌍</span>
+      <div class="card-header-inner">
+        <h2>Window Function — Famous Real-World Examples <span class="phase-tag p9">Phase 9</span></h2>
+        <div class="def">These are the patterns you'll see in actual data engineering and analytics roles — e-commerce, SaaS, finance, and platform analytics.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="wf-grid">
+
+        <div class="wf-item">
+          <h4><span class="wf-badge sql-eq">ROW_NUMBER</span> Deduplicate — keep latest record</h4>
+          <div class="wf-def">Keep only the most recent record per customer. Used in data lakes to remove duplicate ingestions.</div>
+          <pre><code><span class="cm"># sort descending by date, row_number per customer</span>
+df[<span class="str">'rn'</span>] = (
+    df.<span class="fn">sort_values</span>(<span class="str">'updated_at'</span>, ascending=<span class="kw">False</span>)
+      .<span class="fn">groupby</span>(<span class="str">'customer_id'</span>)
+      .<span class="fn">cumcount</span>() + <span class="num">1</span>
+)
+latest = df[df[<span class="str">'rn'</span>] == <span class="num">1</span>]</code></pre>
+        </div>
+
+        <div class="wf-item">
+          <h4><span class="wf-badge usecase">E-COMMERCE</span> Running Revenue per Product</h4>
+          <div class="wf-def">Track cumulative revenue over time per product line. Common in sales dashboards (Shopify, Amazon analytics).</div>
+          <pre><code>df = df.<span class="fn">sort_values</span>([<span class="str">'product'</span>, <span class="str">'date'</span>])
+
+df[<span class="str">'cum_revenue'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'product'</span>)[<span class="str">'revenue'</span>]
+      .<span class="fn">cumsum</span>()
+)</code></pre>
+        </div>
+
+        <div class="wf-item">
+          <h4><span class="wf-badge sql-eq">DENSE_RANK</span> Top-N per Category</h4>
+          <div class="wf-def">Find top 3 best-selling products per category. Used in recommendation engines and merchandising reports.</div>
+          <pre><code>df[<span class="str">'rank'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'category'</span>)[<span class="str">'units_sold'</span>]
+      .<span class="fn">rank</span>(method=<span class="str">'dense'</span>, ascending=<span class="kw">False</span>)
+)
+top3 = df[df[<span class="str">'rank'</span>] <= <span class="num">3</span>]</code></pre>
+        </div>
+
+        <div class="wf-item">
+          <h4><span class="wf-badge usecase">SAAS</span> Month-over-Month Growth</h4>
+          <div class="wf-def">Compare current month's MRR against prior month. Standard metric for SaaS dashboards (Stripe, Chargebee).</div>
+          <pre><code>df = df.<span class="fn">sort_values</span>(<span class="str">'month'</span>)
+
+df[<span class="str">'prev_mrr'</span>]  = df[<span class="str">'mrr'</span>].<span class="fn">shift</span>(<span class="num">1</span>)
+df[<span class="str">'mom_growth'</span>] = (
+    (df[<span class="str">'mrr'</span>] - df[<span class="str">'prev_mrr'</span>])
+    / df[<span class="str">'prev_mrr'</span>] * <span class="num">100</span>
+).<span class="fn">round</span>(<span class="num">2</span>)</code></pre>
+        </div>
+
+        <div class="wf-item">
+          <h4><span class="wf-badge usecase">FINANCE</span> 20-day Moving Average (stock)</h4>
+          <div class="wf-def">Classic technical indicator — smooth out daily noise to reveal trend direction. Used in quant finance and trading systems.</div>
+          <pre><code>df = df.<span class="fn">sort_values</span>(<span class="str">'date'</span>)
+
+df[<span class="str">'ma20'</span>] = (
+    df[<span class="str">'close_price'</span>]
+      .<span class="fn">rolling</span>(<span class="num">20</span>, min_periods=<span class="num">1</span>)
+      .<span class="fn">mean</span>()
+)</code></pre>
+        </div>
+
+        <div class="wf-item">
+          <h4><span class="wf-badge usecase">MONITORING</span> Anomaly Detection</h4>
+          <div class="wf-def">Flag rows where a metric is more than 2 standard deviations from the 30-period rolling mean. Used in ops monitoring (Datadog-style alerting).</div>
+          <pre><code">mu  = df[<span class="str">'latency'</span>].<span class="fn">rolling</span>(<span class="num">30</span>).<span class="fn">mean</span>()
+sig = df[<span class="str">'latency'</span>].<span class="fn">rolling</span>(<span class="num">30</span>).<span class="fn">std</span>()
+
+df[<span class="str">'anomaly'</span>] = (
+    df[<span class="str">'latency'</span>] > mu + <span class="num">2</span> * sig
+)</code></pre>
+        </div>
+
+        <div class="wf-item">
+          <h4><span class="wf-badge usecase">RETAIL</span> % of Category Total</h4>
+          <div class="wf-def">What fraction of the category's total sales does each product contribute? Classic "contribution %" metric in retail analytics.</div>
+          <pre><code>df[<span class="str">'cat_total'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'category'</span>)[<span class="str">'sales'</span>]
+      .<span class="fn">transform</span>(<span class="str">'sum'</span>)
+)
+df[<span class="str">'pct_of_cat'</span>] = (
+    df[<span class="str">'sales'</span>] / df[<span class="str">'cat_total'</span>] * <span class="num">100</span>
+).<span class="fn">round</span>(<span class="num">1</span>)</code></pre>
+        </div>
+
+        <div class="wf-item">
+          <h4><span class="wf-badge usecase">HR / PEOPLE</span> Salary Percentile within Dept</h4>
+          <div class="wf-def">Rank each employee as a percentile within their department — useful for compensation benchmarking and equity analysis.</div>
+          <pre><code>df[<span class="str">'sal_percentile'</span>] = (
+    df.<span class="fn">groupby</span>(<span class="str">'dept'</span>)[<span class="str">'salary'</span>]
+      .<span class="fn">rank</span>(pct=<span class="kw">True</span>)
+      * <span class="num">100</span>
+).<span class="fn">round</span>(<span class="num">1</span>)
+<span class="cm"># 95.0 = top 5% in their dept</span></code></pre>
+        </div>
+
+      </div><!-- /wf-grid -->
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 9 — DATETIME
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Datetime Operations</h2></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">📅</span>
+      <div class="card-header-inner">
+        <h2>Datetime Operations <span class="phase-tag pA">Phase 10</span></h2>
+        <div class="def">Pandas stores dates as <span class="ic">datetime64</span> objects. The <strong>.dt accessor</strong> extracts parts (year, month, weekday…) — similar to the <span class="ic">str</span> accessor for strings. <strong>resample()</strong> groups a time-indexed DataFrame by time periods.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># parse strings to datetime</span>
+df[<span class="str">'date'</span>] = pd.<span class="fn">to_datetime</span>(df[<span class="str">'date_str'</span>])
+
+<span class="cm"># extract components via .dt accessor</span>
+df[<span class="str">'year'</span>]    = df[<span class="str">'date'</span>].<span class="op">dt</span>.year
+df[<span class="str">'month'</span>]   = df[<span class="str">'date'</span>].<span class="op">dt</span>.month
+df[<span class="str">'day'</span>]     = df[<span class="str">'date'</span>].<span class="op">dt</span>.day
+df[<span class="str">'weekday'</span>] = df[<span class="str">'date'</span>].<span class="op">dt</span>.<span class="fn">day_name</span>()   <span class="cm"># 'Monday'</span>
+df[<span class="str">'quarter'</span>] = df[<span class="str">'date'</span>].<span class="op">dt</span>.quarter
+
+<span class="cm"># resample to monthly sum</span>
+df.<span class="fn">set_index</span>(<span class="str">'date'</span>).<span class="fn">resample</span>(<span class="str">'ME'</span>).<span class="fn">sum</span>()
+
+<span class="cm"># filter a date range</span>
+df[df[<span class="str">'date'</span>].<span class="fn">between</span>(<span class="str">'2024-01-01'</span>, <span class="str">'2024-06-30'</span>)]
+
+<span class="cm"># days between two dates</span>
+df[<span class="str">'tenure_days'</span>] = (pd.<span class="fn">Timestamp</span>.<span class="fn">today</span>() - df[<span class="str">'hire_date'</span>]).dt.days</code></pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 10 — PERFORMANCE
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Performance &amp; Scale</h2></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">📦</span>
+      <div class="card-header-inner">
+        <h2>Reading Large Files <span class="phase-tag p1">Phase 12</span></h2>
+        <div class="def"><strong>usecols</strong> avoids loading columns you don't need. <strong>dtype</strong> pre-specifies types so Pandas doesn't guess (guessing wastes memory). <strong>chunksize</strong> reads the file in batches — critical for files that won't fit in RAM.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># selective load — only needed columns + types</span>
+df = pd.<span class="fn">read_csv</span>(<span class="str">'big.csv'</span>,
+    usecols = [<span class="str">'id'</span>, <span class="str">'salary'</span>, <span class="str">'dept'</span>],
+    dtype   = {<span class="str">'id'</span>: <span class="str">'int32'</span>, <span class="str">'salary'</span>: <span class="str">'float32'</span>},
+    nrows   = <span class="num">100_000</span>   <span class="cm"># sample for exploration</span>
+)
+
+<span class="cm"># chunk processing — memory-safe ETL loop</span>
+results = []
+<span class="kw">for</span> chunk <span class="kw">in</span> pd.<span class="fn">read_csv</span>(<span class="str">'huge.csv'</span>, chunksize=<span class="num">10_000</span>):
+    processed = process(chunk)
+    results.<span class="fn">append</span>(processed)
+
+final = pd.<span class="fn">concat</span>(results, ignore_index=<span class="kw">True</span>)</code></pre>
+      <p class="note">Chunk processing = streaming mindset → direct bridge to Spark's partition model.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🧮</span>
+      <div class="card-header-inner">
+        <h2>Memory Optimisation <span class="phase-tag p1">Phase 14</span></h2>
+        <div class="def"><strong>Downcasting</strong> uses smaller integer/float types (int32 instead of int64, float32 instead of float64) to cut memory in half. <strong>category dtype</strong> is extremely efficient for columns with few unique values (like dept, status, country).</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># inspect current memory usage</span>
+df.<span class="fn">info</span>(memory_usage=<span class="str">'deep'</span>)
+
+<span class="cm"># downcast: int64 → int32 (saves 50%)</span>
+df[<span class="str">'id'</span>]     = df[<span class="str">'id'</span>].<span class="fn">astype</span>(<span class="str">'int32'</span>)
+df[<span class="str">'salary'</span>] = df[<span class="str">'salary'</span>].<span class="fn">astype</span>(<span class="str">'float32'</span>)
+
+<span class="cm"># category dtype for low-cardinality strings</span>
+df[<span class="str">'dept'</span>]   = df[<span class="str">'dept'</span>].<span class="fn">astype</span>(<span class="str">'category'</span>)
+df[<span class="str">'status'</span>] = df[<span class="str">'status'</span>].<span class="fn">astype</span>(<span class="str">'category'</span>)
+
+<span class="cm"># drop unneeded columns immediately</span>
+df.<span class="fn">drop</span>(columns=[<span class="str">'_tmp'</span>, <span class="str">'junk_col'</span>], inplace=<span class="kw">True</span>)</code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🚀</span>
+      <div class="card-header-inner">
+        <h2>Vectorisation — no Python loops <span class="phase-tag p1">Phase 15</span></h2>
+        <div class="def"><strong>Vectorised operations</strong> work on the entire column at once using compiled C code under the hood — no Python interpreter per row. This is 10–100× faster than looping. Think of it as operating on the whole array in one shot.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="section-label">❌ Slow — Python for loop</div>
+      <pre><code><span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(df)):
+    df.<span class="op">at</span>[i, <span class="str">'bonus'</span>] = df.<span class="op">at</span>[i, <span class="str">'salary'</span>] * <span class="num">0.1</span></code></pre>
+      <div class="section-label">✅ Fast — vectorised arithmetic</div>
+      <pre><code>df[<span class="str">'bonus'</span>] = df[<span class="str">'salary'</span>] * <span class="num">0.1</span></code></pre>
+      <div class="section-label">✅ Conditional — np.where instead of apply</div>
+      <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+<span class="cm"># 2-way condition</span>
+df[<span class="str">'level'</span>] = np.<span class="fn">where</span>(df[<span class="str">'salary'</span>] > <span class="num">90000</span>, <span class="str">'Senior'</span>, <span class="str">'Junior'</span>)
+
+<span class="cm"># multi-way — np.select</span>
+conditions = [
+    df[<span class="str">'salary'</span>] > <span class="num">100000</span>,
+    df[<span class="str">'salary'</span>] > <span class="num">80000</span>,
+]
+choices = [<span class="str">'L5'</span>, <span class="str">'L4'</span>]
+df[<span class="str">'level'</span>] = np.<span class="fn">select</span>(conditions, choices, default=<span class="str">'L3'</span>)</code></pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 11 — EXPORTING + QUICK REF
+════════════════════════════════════════════════════ -->
+<div class="section-header"><h2>Exporting &amp; Quick Reference</h2></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">💾</span>
+      <div class="card-header-inner">
+        <h2>Exporting Outputs <span class="phase-tag p2">Phase 16</span></h2>
+        <div class="def"><strong>to_parquet()</strong> is the preferred format in Data Engineering — columnar, compressed, and schema-preserving. Use <strong>to_csv()</strong> for human-readable exchange. Always set <span class="ic">index=False</span> unless you explicitly want the index as a column.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code><span class="cm"># CSV — readable, no compression</span>
+df.<span class="fn">to_csv</span>(<span class="str">'output.csv'</span>, index=<span class="kw">False</span>)
+
+<span class="cm"># Parquet — preferred for DE (Delta Lake, S3, Databricks)</span>
+df.<span class="fn">to_parquet</span>(<span class="str">'output.parquet'</span>, index=<span class="kw">False</span>)
+
+<span class="cm"># JSON (records = one object per row)</span>
+df.<span class="fn">to_json</span>(<span class="str">'output.json'</span>, orient=<span class="str">'records'</span>, indent=<span class="num">2</span>)
+
+<span class="cm"># Excel</span>
+df.<span class="fn">to_excel</span>(<span class="str">'output.xlsx'</span>, index=<span class="kw">False</span>, sheet_name=<span class="str">'Data'</span>)</code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">⚡</span>
+      <div class="card-header-inner">
+        <h2>Essential One-liners</h2>
+        <div class="def">The fastest ways to explore and inspect a DataFrame. Run these first whenever you load new data.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code>df.<span class="fn">shape</span>              <span class="cm"># (rows, cols)</span>
+df.<span class="fn">dtypes</span>             <span class="cm"># data type per column</span>
+df.<span class="fn">describe</span>()         <span class="cm"># count/mean/std/min/max</span>
+df.<span class="fn">head</span>(<span class="num">5</span>)            <span class="cm"># first 5 rows</span>
+df.<span class="fn">tail</span>(<span class="num">5</span>)            <span class="cm"># last 5 rows</span>
+df.<span class="fn">sample</span>(<span class="num">10</span>)         <span class="cm"># random 10 rows</span>
+df.<span class="fn">nunique</span>()          <span class="cm"># unique value count per col</span>
+df.<span class="fn">isnull</span>().<span class="fn">sum</span>()     <span class="cm"># null count per col</span>
+df.<span class="fn">corr</span>()             <span class="cm"># correlation matrix</span>
+df.<span class="fn">columns</span>.<span class="fn">tolist</span>()  <span class="cm"># all column names as list</span>
+df[<span class="str">'col'</span>].<span class="fn">unique</span>()   <span class="cm"># distinct values</span>
+df[<span class="str">'col'</span>].<span class="fn">value_counts</span>() <span class="cm"># frequency table</span>
+df.<span class="fn">memory_usage</span>(deep=<span class="kw">True</span>).<span class="fn">sum</span>() <span class="cm"># total bytes</span></code></pre>
+    </div>
+  </div>
+
+</div>
+
+<div style="text-align:center;margin:3rem auto 1rem;color:var(--muted);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;">
+  Pandas Cheatsheet · Phases 1–16 · Definitions · Window Functions · Built for Data Engineering
+</div>
+
+</body>
+</html>
