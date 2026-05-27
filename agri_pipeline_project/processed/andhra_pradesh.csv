@@ -1,0 +1,12 @@
+State,District,Market,Commodity,Variety,Grade,Arrival_Date,Min_Price,Max_Price,Modal_Price,Commodity_Code
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Black Gram (Urd Beans)(Whole),Desi,FAQ,2001-03-07,750,770.0,760,8
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Green Gram (Moong)(Whole),Local (Whole),FAQ,2001-03-07,1600,1800.0,1700,9
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Onion,Bellary,FAQ,2001-03-07,400,450.0,420,23
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Black Gram (Urd Beans)(Whole),Desi,FAQ,2001-03-08,1500,1700.0,1600,8
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Green Gram (Moong)(Whole),Local (Whole),FAQ,2001-03-08,1600,1800.0,1700,9
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Onion,Bellary,FAQ,2001-03-08,400,450.0,420,23
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Black Gram (Urd Beans)(Whole),Desi,FAQ,2001-05-09,1450,1500.0,1450,8
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Green Gram (Moong)(Whole),Ordinary (Split),FAQ,2001-05-09,1850,1900.0,1850,9
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Jute,W-5/TD-5,FAQ,2001-05-09,950,1000.0,950,16
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,Onion,Bellary,FAQ,2001-05-09,280,300.0,280,23
+Andhra Pradesh,Vijayanagaram,Vijayanagaram,"Sesamum (Sesame,Gingelly,Til)",Whitish,FAQ,2001-05-09,1150,1200.0,1150,11

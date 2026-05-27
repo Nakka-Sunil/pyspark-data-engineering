@@ -1,32 +1,60 @@
 from main import loaded_data
 import pandas as pd
-from datetime import datetime
+import os
+# from datetime import datetime
+from pathlib import Path
 
 ds_karnataka = loaded_data[loaded_data["State"] == "Karnataka"]
-ds_AndhraPradesh = loaded_data[loaded_data["State"] == "Andhra Pradesh"]
-ds_tamilnadu = loaded_data[loaded_data["State"] == "Tamil Nadu"]
-ds_Telangana = loaded_data[loaded_data["State"] == "Telangana"]
+ds_andhra_pradesh = loaded_data[loaded_data["State"] == "Andhra Pradesh"]
+ds_tamil_nadu = loaded_data[loaded_data["State"] == "Tamil Nadu"]
+ds_telangana = loaded_data[loaded_data["State"] == "Telangana"]
 
-#print(f'Total records of Karnataka dataset are:  {len(ds_karnataka)}')
+# timestamp = datetime.now().strftime("%Y%m%d")
 
-timestamp = datetime.now().strftime("%Y%m%d")
-# print(timestamp)
-def load_processed_data(ds):
-    processed_dir = 'agri_pipeline_project/data/processed'
+def load_processed_data():
+    processed_dir = Path('agri_pipeline_project\processed')
 
-# Get unique states and save each as separate file
-    for state in loaded_data['State'].unique():
-        state_df = loaded_data[loaded_data["State"] == state]
+    states_data = {
+        "karnataka": ds_karnataka,
+        "andhra_pradesh": ds_andhra_pradesh,
+        "tamil_nadu": ds_tamil_nadu,
+        "telangana": ds_telangana
+    }
+
+    for state_name, state_df in states_data.items():
+
+        filepath = f'{processed_dir}\{state_name}.csv'
+        old_count = len(state_df)
+
+        if os.path.exists(filepath):
+            existing_data = pd.read_csv(filepath)
+
+            combined_data = pd.concat(
+                [existing_data, state_df],
+                ignore_index = True
+            )
+            print('Dropping duplicates...!')
+            print('\n')
+            combined_data = combined_data.drop_duplicates(
+                subset = ['State','District','Market','Commodity','Variety','Grade','Arrival_Date']
+            )
+            print('*'*70)
+            print(f'Data Updated!!! old count is: {old_count} and new count is: {len(combined_data)}')
         
-        # Create filename from state name
-        filename = state.replace(" ", "_").lower()
-        filepath = f'{processed_dir}/{filename}.csv'
-        
-        # state_df.to_parquet(filepath, index=False)
-        print(f"Saved {state}: {len(state_df)} records to {filepath}")
+        else:
+            combined_data = state_df
+            print(f"Data doesn't exist for the state {state_name}, Inserting for the first time!!!")
+            print('\n')
+        # Save file
+        combined_data.to_csv(filepath, index=False)
+
+        print(f"Saved {state_name}: {len(state_df)} records to {filepath}")
+        print('*'*70)
+        print('\n')
 
     return None
 
+
 if __name__ == "__main__":
-    processed_data = load_processed_data(ds_karnataka)
+    processed_data = load_processed_data()
     print(processed_data)

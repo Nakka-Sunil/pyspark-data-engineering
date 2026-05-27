@@ -1,0 +1,334 @@
+State,District,Market,Commodity,Variety,Grade,Arrival_Date,Min_Price,Max_Price,Modal_Price,Commodity_Code
+Tamil Nadu,Cuddalore,Virudhachalam,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-13,1869,2462.0,2359,8
+Tamil Nadu,Cuddalore,Virudhachalam,Groundnut,Bold Kernel,FAQ,2001-03-13,1328,1686.0,1586,10
+Tamil Nadu,Cuddalore,Virudhachalam,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-13,353,375.0,370,5
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Fine,FAQ,2001-03-13,534,564.0,550,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Coarse,FAQ,2001-03-13,461,528.0,500,3
+Tamil Nadu,Cuddalore,Virudhachalam,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-13,1513,2010.0,1952,11
+Tamil Nadu,Cuddalore,Virudhachalam,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-14,446,454.0,450,28
+Tamil Nadu,Cuddalore,Virudhachalam,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-14,2202,2367.0,2269,8
+Tamil Nadu,Cuddalore,Virudhachalam,Coriander (Leaves),Local,FAQ,2001-03-14,2447,2777.0,2672,43
+Tamil Nadu,Cuddalore,Virudhachalam,Groundnut,Big (With Shell),FAQ,2001-03-14,1420,1653.0,1603,10
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Coarse,FAQ,2001-03-14,470,525.0,504,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Fine,FAQ,2001-03-14,534,581.0,572,3
+Tamil Nadu,Cuddalore,Virudhachalam,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-14,1636,2027.0,1986,11
+Tamil Nadu,Villupuram,Ulundurpettai,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-15,470,479.0,475,28
+Tamil Nadu,Villupuram,Ulundurpettai,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-15,1989,2389.0,2100,8
+Tamil Nadu,Villupuram,Ulundurpettai,Groundnut,Big (With Shell),FAQ,2001-03-15,1415,1696.0,1500,10
+Tamil Nadu,Villupuram,Ulundurpettai,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-15,370,370.0,370,5
+Tamil Nadu,Villupuram,Ulundurpettai,Ragi (Finger Millet),Red,FAQ,2001-03-15,479,483.0,481,30
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Coarse,FAQ,2001-03-15,453,490.0,473,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Super Fine,FAQ,2001-03-15,480,495.0,487,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Fine,FAQ,2001-03-15,480,519.0,506,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Medium,FAQ,2001-03-15,521,573.0,560,3
+Tamil Nadu,Villupuram,Ulundurpettai,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-15,1736,1886.0,1750,11
+Tamil Nadu,Villupuram,Ulundurpettai,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-16,430,478.0,450,28
+Tamil Nadu,Villupuram,Ulundurpettai,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-16,2269,2319.0,2300,8
+Tamil Nadu,Villupuram,Ulundurpettai,Groundnut,Big (With Shell),FAQ,2001-03-16,1386,1611.0,1500,10
+Tamil Nadu,Villupuram,Ulundurpettai,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-16,330,330.0,330,5
+Tamil Nadu,Villupuram,Ulundurpettai,Ragi (Finger Millet),Red,FAQ,2001-03-16,483,483.0,483,30
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Coarse,FAQ,2001-03-16,453,489.0,473,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Super Fine,FAQ,2001-03-16,461,493.0,480,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Fine,FAQ,2001-03-16,481,508.0,493,3
+Tamil Nadu,Villupuram,Ulundurpettai,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-16,1126,1888.0,1625,11
+Tamil Nadu,Villupuram,Ulundurpettai,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-19,467,467.0,467,28
+Tamil Nadu,Villupuram,Ulundurpettai,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-19,1898,2269.0,2000,8
+Tamil Nadu,Villupuram,Ulundurpettai,Groundnut,Big (With Shell),FAQ,2001-03-19,1250,1598.0,1500,10
+Tamil Nadu,Villupuram,Ulundurpettai,Ragi (Finger Millet),Red,FAQ,2001-03-19,484,484.0,484,30
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Coarse,FAQ,2001-03-19,455,473.0,467,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Super Fine,FAQ,2001-03-19,480,497.0,493,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Fine,FAQ,2001-03-19,504,511.0,507,3
+Tamil Nadu,Villupuram,Ulundurpettai,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-19,1236,1924.0,1625,11
+Tamil Nadu,Villupuram,Ulundurpettai,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-20,472,477.0,475,28
+Tamil Nadu,Villupuram,Ulundurpettai,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-20,1898,2276.0,2000,8
+Tamil Nadu,Villupuram,Ulundurpettai,Groundnut,Big (With Shell),FAQ,2001-03-20,1336,1544.0,1500,10
+Tamil Nadu,Villupuram,Ulundurpettai,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-20,317,317.0,317,5
+Tamil Nadu,Villupuram,Ulundurpettai,Ragi (Finger Millet),Red,FAQ,2001-03-20,472,489.0,480,30
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Medium,FAQ,2001-03-20,540,565.0,553,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Coarse,FAQ,2001-03-20,455,472.0,467,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Fine,FAQ,2001-03-20,488,512.0,500,3
+Tamil Nadu,Villupuram,Ulundurpettai,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-20,1486,1861.0,1625,11
+Tamil Nadu,Villupuram,Ulundurpettai,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-21,461,477.0,470,28
+Tamil Nadu,Villupuram,Ulundurpettai,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-21,1989,2102.0,2000,8
+Tamil Nadu,Villupuram,Ulundurpettai,Groundnut,Big (With Shell),FAQ,2001-03-21,1279,1549.0,1438,10
+Tamil Nadu,Villupuram,Ulundurpettai,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-21,350,350.0,350,5
+Tamil Nadu,Villupuram,Ulundurpettai,Ragi (Finger Millet),Red,FAQ,2001-03-21,459,487.0,470,30
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Medium,FAQ,2001-03-21,520,560.0,547,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Coarse,FAQ,2001-03-21,455,473.0,467,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Fine,FAQ,2001-03-21,481,512.0,493,3
+Tamil Nadu,Villupuram,Ulundurpettai,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-21,1511,1911.0,1750,11
+Tamil Nadu,Cuddalore,Virudhachalam,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-22,1039,2601.0,2169,8
+Tamil Nadu,Cuddalore,Virudhachalam,Coriander (Leaves),Local,FAQ,2001-03-22,2317,2522.0,2317,43
+Tamil Nadu,Cuddalore,Virudhachalam,Groundnut,Big (With Shell),FAQ,2001-03-22,1523,1565.0,1548,10
+Tamil Nadu,Cuddalore,Virudhachalam,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-22,339,376.0,370,5
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Coarse,FAQ,2001-03-22,434,554.0,440,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Super Fine,FAQ,2001-03-22,536,648.0,541,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Fine,FAQ,2001-03-22,462,489.0,488,3
+Tamil Nadu,Cuddalore,Virudhachalam,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-22,1350,1917.0,1861,11
+Tamil Nadu,Villupuram,Ulundurpettai,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-22,463,463.0,463,28
+Tamil Nadu,Villupuram,Ulundurpettai,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-22,2079,2109.0,2100,8
+Tamil Nadu,Villupuram,Ulundurpettai,Groundnut,Big (With Shell),FAQ,2001-03-22,1374,1553.0,1500,10
+Tamil Nadu,Villupuram,Ulundurpettai,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-22,343,343.0,343,5
+Tamil Nadu,Villupuram,Ulundurpettai,Ragi (Finger Millet),Red,FAQ,2001-03-22,461,499.0,480,30
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Medium,FAQ,2001-03-22,537,564.0,553,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Coarse,FAQ,2001-03-22,437,457.0,447,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Fine,FAQ,2001-03-22,457,505.0,480,3
+Tamil Nadu,Villupuram,Ulundurpettai,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-22,1536,1899.0,1750,11
+Tamil Nadu,Cuddalore,Virudhachalam,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-27,1809,2222.0,2189,8
+Tamil Nadu,Cuddalore,Virudhachalam,Coriander (Leaves),Local,FAQ,2001-03-27,2397,2762.0,2472,43
+Tamil Nadu,Cuddalore,Virudhachalam,Groundnut,Big (With Shell),FAQ,2001-03-27,1595,1600.0,1595,10
+Tamil Nadu,Cuddalore,Virudhachalam,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-27,343,367.0,360,5
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Fine,FAQ,2001-03-27,528,550.0,537,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Medium,FAQ,2001-03-27,493,520.0,506,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Coarse,FAQ,2001-03-27,480,493.0,490,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Super Fine,FAQ,2001-03-27,501,577.0,507,3
+Tamil Nadu,Cuddalore,Virudhachalam,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-27,1573,1977.0,1786,11
+Tamil Nadu,Cuddalore,Virudhachalam,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-28,451,473.0,470,28
+Tamil Nadu,Cuddalore,Virudhachalam,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-28,2009,2126.0,2120,8
+Tamil Nadu,Cuddalore,Virudhachalam,Coriander (Leaves),Local,FAQ,2001-03-28,2443,2672.0,2497,43
+Tamil Nadu,Cuddalore,Virudhachalam,Groundnut,Big (With Shell),FAQ,2001-03-28,1548,1575.0,1561,10
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Super Fine,FAQ,2001-03-28,526,541.0,536,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Fine,FAQ,2001-03-28,450,464.0,453,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Coarse,FAQ,2001-03-28,440,446.0,441,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Medium,FAQ,2001-03-28,434,501.0,460,3
+Tamil Nadu,Cuddalore,Virudhachalam,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-28,1648,1950.0,1823,11
+Tamil Nadu,Villupuram,Ulundurpettai,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-28,362,471.0,450,28
+Tamil Nadu,Villupuram,Ulundurpettai,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-28,2089,2132.0,2100,8
+Tamil Nadu,Villupuram,Ulundurpettai,Groundnut,Bold Kernel,FAQ,2001-03-28,1340,1633.0,1500,10
+Tamil Nadu,Villupuram,Ulundurpettai,Jowar (Sorghum),H.Y.V.,FAQ,2001-03-28,237,237.0,237,5
+Tamil Nadu,Villupuram,Ulundurpettai,Ragi (Finger Millet),Red,FAQ,2001-03-28,415,446.0,430,30
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Coarse,FAQ,2001-03-28,440,450.0,447,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Fine,FAQ,2001-03-28,469,499.0,480,3
+Tamil Nadu,Villupuram,Ulundurpettai,Rice,Medium,FAQ,2001-03-28,520,569.0,547,3
+Tamil Nadu,Villupuram,Ulundurpettai,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-28,1211,1876.0,1625,11
+Tamil Nadu,Cuddalore,Virudhachalam,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-29,2019,2152.0,2100,8
+Tamil Nadu,Cuddalore,Virudhachalam,Coriander (Leaves),Local,FAQ,2001-03-29,2322,2712.0,2612,43
+Tamil Nadu,Cuddalore,Virudhachalam,Groundnut,Bold Kernel,FAQ,2001-03-29,1511,1600.0,1586,10
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Super Fine,FAQ,2001-03-29,510,545.0,536,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Coarse,FAQ,2001-03-29,466,480.0,473,3
+Tamil Nadu,Cuddalore,Virudhachalam,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-29,1578,1935.0,1811,11
+Tamil Nadu,Cuddalore,Virudhachalam,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-03-30,439,469.0,460,28
+Tamil Nadu,Cuddalore,Virudhachalam,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-03-30,2069,2179.0,2089,8
+Tamil Nadu,Cuddalore,Virudhachalam,Coriander (Leaves),Local,FAQ,2001-03-30,2450,2655.0,2472,43
+Tamil Nadu,Cuddalore,Virudhachalam,Groundnut,Bold Kernel,FAQ,2001-03-30,1525,1875.0,1546,10
+Tamil Nadu,Cuddalore,Virudhachalam,Red Gram,Desi (Whole),FAQ,2001-03-30,1689,1819.0,1800,7
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Coarse,FAQ,2001-03-30,449,462.0,452,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Super Fine,FAQ,2001-03-30,461,496.0,462,3
+Tamil Nadu,Cuddalore,Virudhachalam,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-03-30,1611,1942.0,1811,11
+Tamil Nadu,Cuddalore,Virudhachalam,Bajra (Pearl Millet/Cumbu),Hybrid,FAQ,2001-04-02,445,470.0,460,28
+Tamil Nadu,Cuddalore,Virudhachalam,Black Gram (Urd Beans)(Whole),Rajkot T-9,FAQ,2001-04-02,1975,2189.0,2100,8
+Tamil Nadu,Cuddalore,Virudhachalam,Coriander (Leaves),Local,FAQ,2001-04-02,2422,2672.0,2572,43
+Tamil Nadu,Cuddalore,Virudhachalam,Groundnut,Big (With Shell),FAQ,2001-04-02,1548,1586.0,1573,10
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Fine,FAQ,2001-04-02,473,500.0,481,3
+Tamil Nadu,Cuddalore,Virudhachalam,Rice,Medium,FAQ,2001-04-02,461,478.0,470,3
+Tamil Nadu,Cuddalore,Virudhachalam,"Sesamum (Sesame,Gingelly,Til)",Crushing,FAQ,2001-04-02,1611,1957.0,1823,11
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-11-20,1309,1763.0,1569,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-11-20,1100,1665.0,1571,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-11-20,1059,1401.0,1350,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Paddy Medium,FAQ,2001-11-20,301,711.0,386,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-11-20,394,457.0,432,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-11-20,396,408.0,399,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-11-20,329,376.0,368,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-11-22,892,1689.0,1483,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-11-22,1059,1701.0,1580,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-11-22,1014,1410.0,1349,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Champakali,FAQ,2001-11-22,400,441.0,420,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 50,FAQ,2001-11-22,350,390.0,380,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-11-22,450,500.0,480,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-11-22,460,498.0,483,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 20,FAQ,2001-11-22,440,486.0,464,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-11-22,407,459.0,436,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-11-22,382,404.0,394,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-11-22,330,367.0,356,116
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-11-23,1209,1372.0,1331,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-11-23,487,516.0,508,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 50,FAQ,2001-11-23,390,406.0,395,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 20,FAQ,2001-11-23,492,505.0,498,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-11-23,432,452.0,447,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-11-23,396,402.0,399,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-11-23,315,349.0,346,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-11-26,1379,2009.0,1780,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-11-26,1219,1796.0,1679,15
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-11-26,1572,1572.0,1572,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-11-26,1221,1422.0,1349,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 20,FAQ,2001-11-26,489,509.0,500,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 50,FAQ,2001-11-26,380,392.0,385,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-11-26,690,736.0,710,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-11-26,450,510.0,490,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-11-26,419,460.0,449,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-11-26,396,408.0,400,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-11-26,333,383.0,377,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-11-27,1039,1969.0,1692,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-11-27,1334,1591.0,1491,15
+Tamil Nadu,Villupuram,Villupuram,Cowpea (Lobia/Karamani),Cowpea Dal (Split),FAQ,2001-11-27,972,1401.0,1369,92
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-11-27,1519,1711.0,1689,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-11-27,1312,1420.0,1420,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-11-27,511,516.0,512,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-11-27,467,489.0,478,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 20,FAQ,2001-11-27,511,516.0,512,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-11-27,392,396.0,394,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-11-27,360,465.0,449,30
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-11-27,1359,1359.0,1359,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-11-27,370,412.0,408,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-11-27,334,366.0,336,116
+Tamil Nadu,Villupuram,Villupuram,Turmeric,Other,FAQ,2001-11-27,949,1279.0,1100,39
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-11-28,713,2109.0,1650,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-11-28,1196,1559.0,1300,15
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-11-28,1579,1579.0,1579,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-11-28,1238,1470.0,1400,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-11-28,390,426.0,410,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-11-28,360,430.0,400,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Champakali,FAQ,2001-11-28,420,446.0,430,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-11-28,440,493.0,475,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-11-28,338,464.0,450,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-11-28,387,415.0,405,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-11-28,332,384.0,332,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-11-29,739,1929.0,1769,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-11-29,911,1779.0,1011,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-11-29,1229,1479.0,1439,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-11-29,436,496.0,470,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Champakali,FAQ,2001-11-29,380,460.0,440,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 20,FAQ,2001-11-29,469,521.0,517,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-11-29,380,391.0,390,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-11-29,400,436.0,410,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-11-29,455,463.0,460,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-11-29,404,409.0,407,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-11-29,331,365.0,337,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-11-30,1211,1211.0,1211,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-11-30,1299,1769.0,1625,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-11-30,1102,1437.0,1332,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-11-30,470,503.0,499,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),I.R. 50,FAQ,2001-11-30,388,403.0,394,2
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-11-30,1249,1249.0,1249,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-11-30,408,414.0,412,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-11-30,327,367.0,353,116
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-03,1022,1669.0,1450,15
+Tamil Nadu,Villupuram,Villupuram,Cowpea (Lobia/Karamani),Cowpea Dal (Split),FAQ,2001-12-03,1389,1389.0,1389,92
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-12-03,1689,1689.0,1689,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-03,1202,1489.0,1369,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-12-03,490,525.0,500,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-03,390,401.0,395,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Ponni,FAQ,2001-12-03,656,716.0,700,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Paddy Medium,FAQ,2001-12-03,490,507.0,500,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-03,428,470.0,450,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-03,411,414.0,412,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-03,332,374.0,365,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-04,679,1679.0,1400,8
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-04,1081,1472.0,1350,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Paddy Medium,FAQ,2001-12-04,469,512.0,500,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 37,FAQ,2001-12-04,412,441.0,435,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Ponni,FAQ,2001-12-04,690,748.0,710,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-04,376,385.0,380,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-04,422,422.0,422,30
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-12-04,1109,1109.0,1109,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-04,382,420.0,415,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-04,346,367.0,355,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-05,519,1819.0,1300,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-05,1112,1791.0,1500,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-05,1189,1449.0,1370,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-05,401,401.0,401,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-12-05,525,525.0,525,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-12-05,396,396.0,396,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-05,438,464.0,450,30
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-12-05,1169,1389.0,1250,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-05,422,426.0,423,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-05,338,361.0,350,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-07,1409,2011.0,1900,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-07,1296,1597.0,1450,15
+Tamil Nadu,Villupuram,Villupuram,Cowpea (Lobia/Karamani),Cowpea Dal (Split),FAQ,2001-12-07,1125,1315.0,1310,92
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-12-07,1639,1739.0,1739,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-07,1196,1378.0,1300,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-12-07,370,416.0,400,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Champakali,FAQ,2001-12-07,370,416.0,400,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-07,400,453.0,450,30
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-12-07,900,900.0,900,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-07,359,421.0,391,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-07,303,381.0,370,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-11,1611,1611.0,1611,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-11,1193,1409.0,1250,15
+Tamil Nadu,Villupuram,Villupuram,Cowpea (Lobia/Karamani),Cowpea Dal (Split),FAQ,2001-12-11,1194,1194.0,1194,92
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-12-11,1509,1719.0,1700,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-11,1102,1481.0,1450,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-12-11,410,452.0,440,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-11,607,717.0,660,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-12-11,405,438.0,425,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Ponni,FAQ,2001-12-11,607,717.0,660,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-11,432,462.0,440,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-11,387,444.0,440,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-11,326,369.0,345,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-12,1032,1851.0,1500,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-12,1088,1820.0,1600,15
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-12-12,1759,1759.0,1759,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-12,1341,1440.0,1425,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-12-12,439,457.0,445,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 37,FAQ,2001-12-12,498,516.0,505,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-12,411,419.0,415,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-12-12,589,601.0,595,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-12,419,449.0,430,30
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-12-12,1369,1369.0,1369,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-12,447,447.0,447,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-12,328,367.0,345,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-13,697,1549.0,1300,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-13,1367,1832.0,1450,15
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-12-13,1189,1189.0,1189,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-13,1350,1454.0,1430,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-13,409,421.0,415,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-12-13,498,521.0,500,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-13,407,449.0,437,30
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-12-13,1169,1169.0,1169,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-13,400,456.0,455,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-13,330,370.0,352,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-14,702,982.0,900,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-14,1427,1809.0,1600,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-14,1249,1569.0,1380,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Ponni,FAQ,2001-12-14,388,718.0,440,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-14,407,425.0,415,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-12-14,490,521.0,510,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Other,FAQ,2001-12-14,388,406.0,395,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-14,402,402.0,402,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-14,458,459.0,458,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-14,337,373.0,360,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-18,1329,1889.0,1600,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-18,1329,1889.0,1600,15
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-12-18,1669,1669.0,1669,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-18,1320,1471.0,1360,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 37,FAQ,2001-12-18,405,434.0,420,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-12-18,450,460.0,455,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-18,410,426.0,418,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-18,441,442.0,441,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-18,466,466.0,466,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-18,330,373.0,345,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-20,1080,1080.0,1080,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-20,1493,1724.0,1550,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-20,1309,1339.0,1320,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-20,402,402.0,402,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Ponni,FAQ,2001-12-20,356,638.0,410,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-12-20,430,448.0,435,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-20,439,477.0,460,30
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-20,476,476.0,476,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-20,327,373.0,370,116
+Tamil Nadu,Villupuram,Villupuram,Black Gram (Urd Beans)(Whole),Other,FAQ,2001-12-24,1643,1643.0,1643,8
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-24,1763,1862.0,1800,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-24,1209,1346.0,1280,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-24,368,398.0,375,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),Ponni,FAQ,2001-12-24,458,529.0,490,2
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-24,471,486.0,482,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-24,368,373.0,371,116
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-27,819,1872.0,1773,15
+Tamil Nadu,Villupuram,Villupuram,Green Gram (Moong)(Whole),Other,FAQ,2001-12-27,1461,1679.0,1526,9
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-27,1252,1403.0,1300,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 39,FAQ,2001-12-27,526,569.0,552,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 37,FAQ,2001-12-27,410,450.0,427,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-27,402,460.0,452,30
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-12-27,929,929.0,929,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-27,488,488.0,488,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-27,330,374.0,372,116
+Tamil Nadu,Villupuram,Villupuram,Cotton,Other,FAQ,2001-12-28,1592,1889.0,1750,15
+Tamil Nadu,Villupuram,Villupuram,Groundnut,Other,FAQ,2001-12-28,1259,1471.0,1330,10
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),J 13,FAQ,2001-12-28,400,415.0,410,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 37,FAQ,2001-12-28,365,395.0,380,2
+Tamil Nadu,Villupuram,Villupuram,Paddy (Dhan)(Common),ADT 43,FAQ,2001-12-28,507,567.0,540,2
+Tamil Nadu,Villupuram,Villupuram,Ragi (Finger Millet),Other,FAQ,2001-12-28,442,457.0,450,30
+Tamil Nadu,Villupuram,Villupuram,"Sesamum (Sesame,Gingelly,Til)",Other,FAQ,2001-12-28,933,1483.0,1300,11
+Tamil Nadu,Villupuram,Villupuram,T.V. Cumbu,Other,FAQ,2001-12-28,489,512.0,492,120
+Tamil Nadu,Villupuram,Villupuram,Thinai (Italian Millet),Other,FAQ,2001-12-28,328,370.0,360,116
