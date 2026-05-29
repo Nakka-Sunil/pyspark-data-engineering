@@ -35,7 +35,7 @@ df_andhra.to_sql(
 
 try:
 
-    sql_query = """
+    avg_modal_price_per_commodity = """
         SELECT
             COMMODITY,
             AVG(MODAL_PRICE) AS avg_modal_price
@@ -44,12 +44,8 @@ try:
             ORDER BY avg_modal_price DESC
             LIMIT 10;
     """
-    sql_result = pd.read_sql(sql_query, con=db_conn)
-    print('\n')
-    print(sql_result)
-    print('\n')
-
-    sql_query2 = """
+    
+    avg_modal_price_per_dist = """
         SELECT DISTRICT, 
                AVG(MODAL_PRICE) AS avg_modal_price
         FROM andhra_market_data
@@ -57,20 +53,18 @@ try:
         HAVING avg_modal_price > 3000
         ORDER BY avg_modal_price DESC;
     """
-    sql_result2 = pd.read_sql(sql_query2, con=db_conn)
-    print('\n')
-    print(sql_result2)
-    print('\n')
 
-    sql_query3 = """
+    price_rank = """
         SELECT COMMODITY, MARKET, MODAL_PRICE,
             DENSE_RANK() OVER(PARTITION BY COMMODITY ORDER BY MODAL_PRICE DESC) AS price_rank
         FROM andhra_market_data
         ORDER BY price_rank;
     """
-    sql_result3 = pd.read_sql(sql_query3, con=db_conn)
+    print(pd.read_sql(avg_modal_price_per_commodity, con=db_conn))
     print('\n')
-    print(sql_result3)
+    print(pd.read_sql(avg_modal_price_per_dist, con = db_conn))
+    print('\n')
+    print(pd.read_sql(price_rank, con = db_conn))
     print('\n')
 
 except Exception as e:
