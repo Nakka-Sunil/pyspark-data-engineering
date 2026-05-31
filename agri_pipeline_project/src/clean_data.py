@@ -44,19 +44,7 @@ def fill_values(data, method='fill', value=None):
 
 if __name__ == "__main__":
     loaded_data = pd.DataFrame(load_data())
-    cust_cols = input('Do you want to check nulls for any specific columns -- y/n: ')
-    
-    if cust_cols == 'y':
-        no_of_cols = int(input('How many columns that you want to check nulls for [0-11]: '))
-        col_lst = []
-
-        for val in range(no_of_cols):
-            col_name = input('Enter your column name Here, values must be in [State, District, Market, Commodity, Variety, Grade, Arrival_Date, Min_Price, Max_Price, Modal_Price, Commodity_Code]: ')
-            col_lst.append(col_name)
-     
-        final_col_lst = [col for col in col_lst if col in loaded_data.columns]
-    else: 
-        final_col_lst = [col for col in loaded_data.columns]
+    final_col_lst = [col for col in loaded_data.columns]
 
     null_info = check_nulls(loaded_data, final_col_lst)
     
@@ -71,3 +59,20 @@ if __name__ == "__main__":
         print("No null values found in the specified columns.")
 
     
+
+
+# def clean_data(data):
+
+#     data = trim_spaces(data)
+
+#     data = fill_values(data)
+
+#     data = remove_duplicates(data)
+
+#     data = standardize_text(data)
+
+#     data = convert_dates(data)
+
+#     data = convert_prices(data)
+
+#     return data
