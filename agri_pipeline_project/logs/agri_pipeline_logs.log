@@ -1,0 +1,11 @@
+2026-05-31 20:10:17.541 | ERROR    | __main__:load_data:42 - No files exists under folder .
+2026-05-31 20:10:46.836 | ERROR    | __main__:load_data:42 - No files exists under folder .
+2026-05-31 20:11:36.772 | ERROR    | __main__:load_data:42 - No files exists under folder .
+2026-05-31 20:12:00.122 | ERROR    | __main__:load_data:42 - No files exists under folder .
+2026-05-31 20:12:58.594 | ERROR    | __main__:load_data:42 - No files exists under folder .
+2026-05-31 20:13:16.163 | ERROR    | __main__:load_data:42 - No files exists under folder .
+2026-05-31 20:13:53.053 | ERROR    | __main__:load_data:42 - No files exists under folder .
+2026-05-31 20:15:52.250 | ERROR    | __main__:load_data:42 - No files exists under folder .
+2026-05-31 20:17:49.071 | SUCCESS  | __main__:load_data:38 - Successfully loaded 3 files...
+2026-05-31 20:18:23.299 | SUCCESS  | extract_data:load_data:38 - Successfully loaded 3 files...
+2026-05-31 20:32:13.025 | SUCCESS  | extract_data:load_data:38 - Successfully loaded 3 files...
