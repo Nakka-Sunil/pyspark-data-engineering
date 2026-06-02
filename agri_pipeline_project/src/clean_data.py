@@ -1,8 +1,11 @@
 import pandas as pd
 from loguru import logger
 from extract_data import load_data
+from pathlib import Path
 import os
 
+cleaned_folder_path = Path(f'agri_pipeline_project\data\processed')
+cleaned_data_path = os.path.join(cleaned_folder_path, 'cleaned_agri_data.csv')
 
 def check_nulls(data, columns=None):
     result_nulls = {}
@@ -37,9 +40,70 @@ def fill_values(data, method='fill', value=None):
                     data[col] = data[col].fillna('unknown')
     return data
 
+def clean_data(data):
+    # Remove white spaces from object columns
+    columns = data.select_dtypes(include=['object']).columns
+    
+    for col in columns:
+        if col in data.columns:
+            data[col] = data[col].str.strip()
+    
+    logger.info('White spaces removed from the data...!')
+    
+    # Remove duplicates
+    data_before = len(data)
+    data = data.drop_duplicates()
+    data_after = len(data)
+    
+    logger.info(f'Removed {data_before - data_after} rows from entire dataset..!')
+    
+    # Standardize text columns
+    data_cols = [
+        'State',
+        'District',
+        'Market',
+        'Commodity',
+        'Variety',
+        'Grade'
+    ]
+    
+    for col in data_cols:
+        if col in data.columns:
+            data[col] = data[col].str.title()
+    
+    logger.info('Dataset columns were standardized..!')
+    
+    # Convert dates
+    if 'Arrival_Date' in data.columns:
+        data['Arrival_Date'] = pd.to_datetime(
+            data['Arrival_Date'],
+            errors='coerce'
+        )
+        logger.info('Dates were converted..!')
+    
+    # Convert price columns to numeric
+    price_cols = ['Min_Price', 'Max_Price', 'Modal_Price']
+    
+    for col in price_cols:
+        if col in data.columns:
+            data[col] = (
+                data[col]
+                .astype(str)
+                .str.replace(',', '', regex=False)
+                .str.replace('₹', '', regex=False)  
+                .str.replace('$', '', regex=False)
+            )
+            data[col] = pd.to_numeric(
+                data[col],
+                errors='coerce'
+            )
+    
+    logger.info('Prices were converted..!')
+    
+    # Return cleaned data
+    logger.info('Data cleaned and sent for Next Process..!') 
+    return data
 
-# def clean_data(data):
-#     return data
 
 
 if __name__ == "__main__":
@@ -52,27 +116,27 @@ if __name__ == "__main__":
         for col, stats in null_info.items():
             if stats['nulls'] > 0:
                 print(f"Column '{col}': {stats['nulls']} nulls ({stats['null_percent']}%)")
+                logger.info('Nulls check completed..!')
                 print('Handling Null values...!')
                 print('\n')
-                fill_values(loaded_data)
-    else:
-        print("No null values found in the specified columns.")
+                data_filled = fill_values(loaded_data)
+    
+    cleaned_data = clean_data(data_filled)
+    cleaned_data.to_csv(
+        cleaned_data_path,
+        index=False
+    )
+print("=" * 50)
+print("PIPELINE SUMMARY")
+print("=" * 50)
+print(f"Rows Loaded  : {len(loaded_data)}")
+print(f"Rows Cleaned : {len(cleaned_data)}")
+print(f"Columns      : {len(cleaned_data.columns)}")
+print("=" * 50)
+
+
+
 
     
 
 
-# def clean_data(data):
-
-#     data = trim_spaces(data)
-
-#     data = fill_values(data)
-
-#     data = remove_duplicates(data)
-
-#     data = standardize_text(data)
-
-#     data = convert_dates(data)
-
-#     data = convert_prices(data)
-
-#     return data
