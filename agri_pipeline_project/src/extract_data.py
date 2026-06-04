@@ -8,7 +8,7 @@ log_dir.mkdir(parents=True, exist_ok=True)
 log_path = log_dir / "agri_pipeline_logs.log"
 
 logger.remove()
-logger.add(log_path, rotation="1 MB")
+logger.add(log_path, rotation="5 MB")
 
 folder_path_def = Path('agri_pipeline_project/data/raw')
 def load_data(folder_path = None):

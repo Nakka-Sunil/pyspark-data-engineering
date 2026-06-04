@@ -81,8 +81,20 @@ def validate_data(df):
 
 
     # Empty Commodity Names
-
+    df_commodity_count = df['Commodity'].isna().sum()
+    if df_commodity_count > 0:
+        logger.info('Null values found in Commodity column. Dropping null values..!')
+        df['Commodity'] = df.dropna(subset = ['Commodity'])
+    logger.info('Commodity Values were standerdized..!')
     # Invalid Dates
+    date_cols = [col for col in df.columns if 'date' in col.lower()]
+    if date_cols:
+        for date_col in date_cols:
+            df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+            df = df.dropna(subset= date_col)
+    logger.info('Dates were standerdized..!')
+
+
     logger.info(f'Validation complete. Final row count: {len(df)}')
     print('**' * 50)
     return df.head(5)
