@@ -1,6 +1,6 @@
 import pandas as pd
 from loguru import logger
-from extract_data import load_data
+from extract_data_layer import load_data
 from pathlib import Path
 import os
 
@@ -54,8 +54,8 @@ def clean_data(data):
     data_before = len(data)
     data = data.drop_duplicates()
     data_after = len(data)
-    
-    logger.info(f'Removed {data_before - data_after} rows from entire dataset..!')
+    rows_removed = data_before - data_after
+    logger.info(f'Removed {rows_removed} rows from entire dataset..!')
     
     # Standardize text columns
     data_cols = [
@@ -122,17 +122,11 @@ if __name__ == "__main__":
                 data_filled = fill_values(loaded_data)
     
     cleaned_data = clean_data(data_filled)
-    cleaned_data.to_csv(
-        cleaned_data_path,
-        index=False
-    )
-print("=" * 50)
-print("PIPELINE SUMMARY")
-print("=" * 50)
-print(f"Rows Loaded  : {len(loaded_data)}")
-print(f"Rows Cleaned : {len(cleaned_data)}")
-print(f"Columns      : {len(cleaned_data.columns)}")
-print("=" * 50)
+    # cleaned_data.to_csv(
+    #     cleaned_data_path,
+    #     index=False
+    # )
+
 
 
 
